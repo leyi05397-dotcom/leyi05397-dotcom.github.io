@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Leyi Wang (王乐怡) — MSc Signal Processing & Machine Learning, NTU Singapore. Personal site.">
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style><title>Leyi Wang 王乐怡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
+<style>
+:root{
+  --bg:#F4F6FA; --surface:#FFFFFF; --ink:#1B2336; --muted:#5A6378; --line:#DCE1EB;
+  --denim:#3C6399; --denim-soft:#DDE7F4; --red:#D8382E; --red-soft:#FBE3E0;
+  --honey:#B97A22; --honey-soft:#F4E6CC; --grid:rgba(60,99,153,.10);
+  --shadow:0 18px 40px -18px rgba(27,35,54,.35);
+  --f-display:"Bricolage Grotesque","Noto Sans SC",system-ui,sans-serif;
+  --f-body:"Figtree","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-han:"Noto Serif SC","Songti SC","SimSun",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1321; --surface:#161D2F; --ink:#E7EBF4; --muted:#9BA4B9; --line:#2A3349;
+    --denim:#86A9DB; --denim-soft:#1F2D48; --red:#FF6B5E; --red-soft:#3A1F22;
+    --honey:#E3AA55; --honey-soft:#3A2E1B; --grid:rgba(134,169,219,.10);
+    --shadow:0 18px 40px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1321; --surface:#161D2F; --ink:#E7EBF4; --muted:#9BA4B9; --line:#2A3349;
+  --denim:#86A9DB; --denim-soft:#1F2D48; --red:#FF6B5E; --red-soft:#3A1F22;
+  --honey:#E3AA55; --honey-soft:#3A2E1B; --grid:rgba(134,169,219,.10);
+  --shadow:0 18px 40px -18px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
+.mark{font-family:var(--f-display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.mark i{width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 50%,transparent)}50%{box-shadow:0 0 0 7px transparent}}
+.nav{display:flex;gap:18px;margin-left:auto;font-size:.9rem}
+.nav a{color:var(--muted);text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.lang{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:600}
+.lang button{background:none;border:0;padding:5px 12px}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:720px){.nav{display:none}.lang{margin-left:auto}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(28px,5vw,64px) 24px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:.82rem;color:var(--muted)}
+.eyebrow b{color:var(--denim);font-weight:600}
+h1{margin:18px 0 6px;line-height:.95;text-wrap:balance}
+.name-main{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,8vw,5.6rem);letter-spacing:-.045em}
+.name-sub{display:block;font-family:var(--f-han);font-weight:700;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--denim);margin-top:10px;letter-spacing:.08em}
+html[lang="zh"] .name-main{font-family:var(--f-han);font-weight:900;letter-spacing:.04em}
+html[lang="zh"] .name-sub{font-family:var(--f-display);font-weight:600;letter-spacing:-.01em}
+.tagline{font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:34em;color:var(--ink);margin:20px 0 0}
+.tagline em{font-style:normal;background:linear-gradient(transparent 62%,var(--honey-soft) 62%)}
+.seek{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.chip.hot{border-color:var(--red);color:var(--red);background:var(--red-soft)}
+
+/* oscilloscope */
+.scope{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px 12px}
+.scope-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.scope canvas{display:block;width:100%;height:78px;cursor:crosshair;touch-action:pan-y}
+.scope-hint{font-size:.78rem;color:var(--muted)}
+
+/* avatar stage */
+.stage{position:relative;width:100%;max-width:540px;aspect-ratio:1;margin-inline:auto;container-type:inline-size}
+.avatar-btn{position:absolute;left:50%;top:50%;width:54%;transform:translate(-50%,-50%);background:none;border:0;padding:0;border-radius:50%;transition:transform .5s cubic-bezier(.3,1.6,.5,1);z-index:3}
+.avatar-btn svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 16px 20px rgba(27,35,54,.22))}
+.stage.open .avatar-btn{transform:translate(-50%,-52%) scale(1.04)}
+.ring{position:absolute;left:50%;top:52%;width:58%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1.5px dashed color-mix(in srgb,var(--denim) 55%,transparent);animation:spin 40s linear infinite;z-index:1}
+.stage.open .ring{width:88%;border-color:color-mix(in srgb,var(--red) 45%,transparent);transition:width .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hint{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);white-space:nowrap;font-size:.82rem;color:var(--muted);display:flex;gap:6px;align-items:center;transition:opacity .3s}
+.hint::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
+.stage.open .hint{opacity:0}
+.orbit{list-style:none;margin:0;padding:0}
+.bubble{position:absolute;left:50%;top:50%;z-index:4;width:max-content;max-width:11rem;
+  transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;
+  transition:transform .55s cubic-bezier(.3,1.5,.5,1),opacity .25s;transition-delay:calc(var(--i)*40ms)}
+.stage.open .bubble{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(1);opacity:1;pointer-events:auto;transition-delay:calc(var(--i)*60ms)}
+.bubble button{display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface);border:1.5px solid var(--ink);border-radius:16px;padding:8px 12px 8px 8px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s,background .15s}
+.bubble button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+.bubble .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--denim-soft);color:var(--denim)}
+.bubble:nth-child(even) .ic{background:var(--honey-soft);color:var(--honey)}
+.bubble .t{display:block;font-weight:600;font-size:.92rem;line-height:1.2}
+.bubble .s{display:block;font-size:.74rem;color:var(--muted);line-height:1.25}
+.ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* avatar life: float, blink, happy face, sparkles */
+#toon{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px)}}
+#eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96.5%{transform:scaleY(.1)}}
+#eyes,#mouthSmall{transition:opacity .2s}
+#eyesHappy,#mouthBig{opacity:0;transition:opacity .2s}
+.stage.open #eyes,.stage.open #mouthSmall{opacity:0}
+.stage.open #eyesHappy,.stage.open #mouthBig{opacity:1}
+#blush{transition:opacity .4s}
+.stage.open #blush{opacity:1}
+#glasses{transform-box:fill-box;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.4,1.8,.5,1)}
+.stage.open #glasses{transform:translateY(-6px) rotate(-8deg)}
+#ahoge{transform-box:fill-box;transform-origin:0% 100%;animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(14deg)}}
+.spark{transform-box:fill-box;transform-origin:center;transform:scale(0);opacity:0;transition:transform .45s cubic-bezier(.3,1.8,.5,1),opacity .2s}
+.stage.open .spark{transform:scale(1);opacity:1;animation:twinkle 1.6s ease-in-out infinite}
+.stage.open .spark:nth-of-type(2){transition-delay:.08s;animation-delay:.3s}
+.stage.open .spark:nth-of-type(3){transition-delay:.16s;animation-delay:.6s}
+.stage.open .spark:nth-of-type(4){transition-delay:.24s;animation-delay:.9s}
+@keyframes twinkle{50%{transform:scale(.75) rotate(12deg)}}
+
+@media (max-width:900px){.hero{grid-template-columns:1fr}.stage{order:-1}}
+@media (max-width:560px){
+  .stage{aspect-ratio:auto;container-type:normal;display:flex;flex-direction:column;align-items:center;gap:18px}
+  .avatar-btn,.stage.open .avatar-btn{position:relative;left:auto;top:auto;transform:none;width:66%}
+  .ring{top:33%;width:74%}.stage.open .ring{width:74%}
+  .hint{display:none}
+  .orbit{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+  .bubble,.stage.open .bubble{position:static;transform:none;opacity:1;pointer-events:auto;max-width:none;width:auto;animation:pop .5s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i)*70ms)}
+  .bubble button{width:100%}
+}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+
+/* readouts */
+.readouts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;margin-block:8px 0}
+.ro{padding:16px 18px;border-left:1px solid var(--line)}
+.ro:first-child{border-left:0}
+.ro .v{font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.ro .v small{font-size:.5em;color:var(--muted);font-weight:600;margin-left:3px}
+.ro .l{font-size:.82rem;color:var(--muted);line-height:1.35;margin-top:4px}
+@media (max-width:820px){.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}.ro{border-left:0;border-top:1px solid var(--line)}.ro:nth-child(-n+2){border-top:0}.ro:nth-child(even){border-left:1px solid var(--line)}.ro:last-child{grid-column:1/-1}}
+
+/* sections */
+section.block{padding-block:clamp(48px,7vw,84px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.035em;line-height:1.05;margin:6px 0 0;text-wrap:balance}
+html[lang="zh"] h2{letter-spacing:0}
+.sec-head p{margin:0;max-width:30em;color:var(--muted)}
+
+/* channel list */
+.channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ch{display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;transition:border-color .2s,transform .2s}
+.ch:hover{border-color:var(--ink);transform:translateY(-3px)}
+.ch-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ch h3{margin:0;font-size:1.12rem;font-weight:600}
+.ch p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.5}
+.ch .more{margin-top:auto;padding-top:6px;font-size:.85rem;font-weight:600;color:var(--red)}
+.ch .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--denim-soft);color:var(--denim)}
+@media (max-width:860px){.channels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.channels{grid-template-columns:1fr}}
+
+/* timeline */
+.tl-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 10px}
+.tl{min-width:760px;display:grid;grid-template-columns:92px 1fr;row-gap:0}
+.tl-lane-name{font-size:.82rem;font-weight:600;color:var(--muted);display:flex;align-items:center;border-top:1px dashed var(--line)}
+.tl-track{position:relative;height:64px;border-top:1px dashed var(--line)}
+.tl-lane-name:first-of-type,.tl-track:nth-of-type(2){border-top:0}
+.tl-bar{position:absolute;top:18px;height:28px;border-radius:8px;border:1.5px solid var(--ink);background:var(--denim-soft);font-size:.76rem;font-weight:600;padding:0 8px;display:flex;align-items:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:transform .15s,box-shadow .15s}
+.tl-bar.c-intern,.tl-bar.c-stage{background:var(--red-soft)}
+.tl-bar.c-lead,.tl-bar.c-projects{background:var(--honey-soft)}
+.tl-bar:hover,.tl-bar:focus-visible{transform:translateY(-2px);box-shadow:3px 3px 0 var(--ink)}
+.tl-pt{position:absolute;top:24px;width:16px;height:16px;margin-left:-8px;transform:rotate(45deg);background:var(--red);border:1.5px solid var(--ink);padding:0;transition:transform .15s}
+.tl-pt:hover,.tl-pt:focus-visible{transform:rotate(45deg) scale(1.3)}
+.tl-pt span{position:absolute;left:50%;transform:rotate(-45deg);white-space:nowrap;font-size:.72rem;font-weight:600;color:var(--ink);pointer-events:none}
+.tl-pt.up span{bottom:16px;left:14px}
+.tl-pt.down span{top:16px;left:-6px}
+.tl-axis{position:relative;height:28px;border-top:1.5px solid var(--ink);grid-column:2}
+.tl-axis span{position:absolute;top:6px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.tl-axis span::before{content:"";position:absolute;left:50%;top:-10px;height:6px;border-left:1.5px solid var(--ink)}
+.tl-now{position:absolute;top:0;bottom:0;border-left:2px solid var(--red);pointer-events:none}
+.tl-now::after{content:attr(data-label);position:absolute;top:-2px;left:6px;font-family:var(--f-mono);font-size:.66rem;color:var(--red);white-space:nowrap}
+
+/* piano */
+.piano-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.piano{position:relative;display:flex;height:250px;background:var(--ink);padding:14px 14px 0;border-radius:16px 16px 10px 10px;box-shadow:var(--shadow);user-select:none}
+.wkey{flex:1;position:relative;margin:0 2px;border:0;border-radius:0 0 8px 8px;background:#FBFBF8;color:#1B2336;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 2px 12px;gap:4px;transition:transform .08s,background .15s;box-shadow:inset 0 -6px 0 #D9DCE3}
+.wkey:hover{background:#FFF7E6}
+.wkey.on{transform:translateY(3px);box-shadow:inset 0 -2px 0 #D9DCE3;background:#FFE9C7}
+.wkey.sel{background:#FFE9C7}
+.wkey.sel::after{content:"";position:absolute;top:44%;width:10px;height:10px;border-radius:50%;background:#D8382E}
+.wkey .n{font-family:var(--f-mono);font-size:.78rem;font-weight:600}
+.wkey .k{font-family:var(--f-mono);font-size:.62rem;color:#8A91A3;border:1px solid #CDD2DC;border-radius:4px;padding:0 4px}
+.bkey{position:absolute;top:14px;width:9%;height:56%;margin-left:-4.5%;border:0;border-radius:0 0 6px 6px;background:#10141F;box-shadow:inset 0 -5px 0 #2B3347;z-index:2;transition:transform .08s}
+.bkey.on{transform:translateY(2px);box-shadow:inset 0 -2px 0 #2B3347}
+.strength{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.strength .note{font-family:var(--f-mono);font-size:.78rem;color:var(--red);letter-spacing:.08em}
+.strength h3{margin:0;font-family:var(--f-display);font-size:1.6rem;letter-spacing:-.02em;line-height:1.15}
+html[lang="zh"] .strength h3{letter-spacing:0}
+.strength p{margin:0;color:var(--muted)}
+.strength .row{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1.5px solid var(--ink);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.88rem;font-weight:600;transition:box-shadow .15s,transform .15s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.strength.flash h3{animation:flash .4s}
+@keyframes flash{from{transform:translateY(6px);opacity:.3}}
+@media (max-width:820px){.piano-wrap{grid-template-columns:1fr}.piano{height:210px}}
+@media (max-width:420px){.wkey .k{display:none}}
+
+/* contact */
+.contact{margin-block:clamp(48px,7vw,84px) 40px;background:var(--ink);color:var(--bg);border-radius:20px;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center}
+.contact h2{color:var(--bg)}
+.contact p{color:color-mix(in srgb,var(--bg) 70%,transparent);margin:10px 0 0}
+.clist{display:flex;flex-direction:column;gap:10px}
+.crow{display:flex;align-items:center;gap:12px;justify-content:space-between;border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);border-radius:12px;padding:10px 12px 10px 14px}
+.crow .lbl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.65;display:block}
+.crow .val{font-family:var(--f-mono);font-size:.92rem;user-select:all;word-break:break-all}
+.crow button{flex:none;background:var(--bg);color:var(--ink);border:0;border-radius:999px;padding:6px 12px;font-size:.8rem;font-weight:600}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+footer{padding-block:0 40px;color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* modal */
+.scrim{position:fixed;inset:0;z-index:50;background:rgba(14,19,33,.55);backdrop-filter:blur(3px);display:grid;place-items:center;padding:16px;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.modal{width:min(720px,100%);max-height:min(86vh,100%);display:flex;flex-direction:column;background:var(--bg);border:1.5px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink);animation:rise .35s cubic-bezier(.3,1.4,.5,1)}
+@keyframes rise{from{transform:translateY(30px) scale(.96);opacity:0}}
+.m-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.m-head .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--denim-soft);color:var(--denim)}
+.m-head h3{margin:0;font-family:var(--f-display);font-size:1.4rem;letter-spacing:-.02em;line-height:1.1}
+.m-head .count{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.m-nav{margin-left:auto;display:flex;gap:6px}
+.m-nav button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ink);background:var(--surface);display:grid;place-items:center;font-size:1rem;line-height:1}
+.m-body{overflow-y:auto;padding:6px 20px 20px}
+.m-block{padding-block:16px;border-bottom:1px dashed var(--line)}
+.m-block:last-child{border-bottom:0}
+.m-block .meta{font-family:var(--f-mono);font-size:.74rem;color:var(--red);letter-spacing:.04em}
+.m-block h4{margin:4px 0 2px;font-size:1.12rem;line-height:1.3}
+.m-block .role{color:var(--denim);font-weight:600;font-size:.94rem}
+.m-block ul{margin:10px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.m-block li{max-width:62ch}
+.m-block li::marker{color:var(--honey)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tags span{font-size:.78rem;padding:3px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:.88rem;z-index:60}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark"><i></i>LEYI · 乐怡</div>
+    <nav class="nav">
+      <a href="#explore" data-i18n="navExplore"></a>
+      <a href="#trace" data-i18n="navTrace"></a>
+      <a href="#keys" data-i18n="navKeys"></a>
+      <a href="#contact" data-i18n="navContact"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-en" type="button" data-lang="en">EN</button>
+      <button id="lang-zh" type="button" data-lang="zh">中文</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><b>NTU</b><span data-i18n="eyebrow"></span></span>
+      <h1><span class="name-main" id="nameMain"></span><span class="name-sub" id="nameSub"></span></h1>
+      <p class="tagline" id="tagline"></p>
+      <div class="seek" id="seek"></div>
+      <div class="scope">
+        <div class="scope-head"><span class="mono" id="scopeLabel">CH1 · 2 V/div · 50 ms/div</span><span class="mono" id="scopeF">f = 2.0 Hz</span></div>
+        <canvas id="wave" aria-hidden="true"></canvas>
+        <div class="scope-hint" data-i18n="scopeHint"></div>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="ring"></div>
+      <button class="avatar-btn" id="avatarBtn" type="button" aria-expanded="false" aria-controls="orbit">
+        <svg viewBox="0 0 240 250" role="img" aria-label="Cartoon portrait of Leyi">
+          <defs>
+            <clipPath id="clipA"><circle cx="120" cy="140" r="105"/><rect x="0" y="0" width="240" height="140"/></clipPath>
+            <pattern id="stripes" width="12" height="9" patternUnits="userSpaceOnUse">
+              <rect width="12" height="9" fill="#F5F1E6"/><rect y="5" width="12" height="2.6" fill="#6F7686"/>
+            </pattern>
+            <linearGradient id="lens" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2F2A"/><stop offset="1" stop-color="#15110F"/></linearGradient>
+          </defs>
+          <circle cx="120" cy="140" r="105" fill="var(--denim-soft)"/>
+          <circle cx="120" cy="140" r="105" fill="none" stroke="var(--ink)" stroke-width="2"/>
+          <g id="toon">
+          <g clip-path="url(#clipA)">
+            <!-- hair back -->
+            <path d="M50 124 C44 62 84 34 120 34 C156 34 196 62 190 124 C194 162 196 200 198 240 L42 240 C44 200 46 162 50 124 Z" fill="#2A1E1A"/>
+            <!-- neck & chest -->
+            <path d="M109 168 L131 168 L134 194 Q148 199 160 202 Q120 222 80 202 Q92 199 106 194 Z" fill="#F7D6C1"/>
+            <!-- striped boat-neck tee -->
+            <path d="M24 250 C26 228 46 209 80 202 Q120 224 160 202 C194 209 214 228 216 250 Z" fill="url(#stripes)" stroke="var(--ink)" stroke-width="1.5"/>
+            <path d="M80 202 Q120 224 160 202" fill="none" stroke="#F5F1E6" stroke-width="3"/>
+            <!-- red tote strap -->
+            <path d="M76 203 C86 216 95 234 100 256" fill="none" stroke="#E0463B" stroke-width="12" stroke-linecap="round"/>
+            <path d="M76 203 C86 216 95 234 100 256" fill="none" stroke="#B42A22" stroke-width="2" stroke-dasharray="3 5"/>
+            <!-- hair over shoulders -->
+            <path d="M58 132 C50 170 50 200 44 226 L60 222 C66 192 66 158 68 138 Z" fill="#33251F"/>
+            <path d="M182 132 C190 170 190 196 196 220 L180 220 C174 190 172 158 172 138 Z" fill="#33251F"/>
+          </g>
+          <!-- ears -->
+          <ellipse cx="62" cy="136" rx="8" ry="10" fill="#F3CDB6"/>
+          <ellipse cx="178" cy="136" rx="8" ry="10" fill="#F3CDB6"/>
+          <!-- round chibi face -->
+          <path d="M62 124 C62 88 88 70 120 70 C152 70 178 88 178 124 C178 160 154 182 120 182 C86 182 62 160 62 124 Z" fill="#FBE1CF"/>
+          <!-- soft side-swept bangs -->
+          <path d="M58 136 C50 76 88 48 122 48 C158 48 192 76 182 136 C178 110 166 94 146 88 C150 98 148 104 146 108 C136 96 120 90 104 92 C92 100 74 112 62 140 Z" fill="#2A1E1A"/>
+          <path d="M104 92 C96 98 86 108 80 120" fill="none" stroke="#3E2E27" stroke-width="2" stroke-linecap="round"/>
+          <path d="M136 56 C128 64 124 74 124 84" fill="none" stroke="#4A3830" stroke-width="2.5" stroke-linecap="round"/>
+          <path id="ahoge" d="M120 50 C112 36 124 26 134 32" fill="none" stroke="#2A1E1A" stroke-width="4" stroke-linecap="round"/>
+          <!-- brows -->
+          <path d="M86 112 Q96 107 106 111" fill="none" stroke="#3A2A24" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M134 111 Q144 107 154 112" fill="none" stroke="#3A2A24" stroke-width="2.6" stroke-linecap="round"/>
+          <!-- big sparkly eyes -->
+          <g id="eyes">
+            <path d="M84 124 Q95 117 108 122" fill="none" stroke="#2A1C18" stroke-width="3" stroke-linecap="round"/>
+            <path d="M132 122 Q145 117 156 124" fill="none" stroke="#2A1C18" stroke-width="3" stroke-linecap="round"/>
+            <path d="M84 124 L80 120" stroke="#2A1C18" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M156 124 L160 120" stroke="#2A1C18" stroke-width="2.4" stroke-linecap="round"/>
+            <g id="pupils">
+              <ellipse cx="96" cy="134" rx="10" ry="12" fill="#2A1C18"/>
+              <ellipse cx="144" cy="134" rx="10" ry="12" fill="#2A1C18"/>
+              <ellipse cx="96" cy="139" rx="7" ry="6" fill="#5A3A2C"/>
+              <ellipse cx="144" cy="139" rx="7" ry="6" fill="#5A3A2C"/>
+              <circle cx="100" cy="129" r="4" fill="#fff"/>
+              <circle cx="148" cy="129" r="4" fill="#fff"/>
+              <circle cx="92.5" cy="140" r="1.8" fill="#fff"/>
+              <circle cx="140.5" cy="140" r="1.8" fill="#fff"/>
+            </g>
+          </g>
+          <!-- happy ^ ^ eyes on hover -->
+          <g id="eyesHappy" fill="none" stroke="#2A1C18" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M85 138 Q96 124 107 138"/>
+            <path d="M133 138 Q144 124 155 138"/>
+          </g>
+          <!-- blush with shine lines -->
+          <g id="blush" opacity=".7">
+            <ellipse cx="82" cy="154" rx="12" ry="7" fill="#F7A3A0"/>
+            <ellipse cx="158" cy="154" rx="12" ry="7" fill="#F7A3A0"/>
+            <path d="M76 153 L79 150 M82 154 L85 151 M88 153 L91 150 M152 153 L155 150 M158 154 L161 151 M164 153 L167 150" stroke="#EE7F7C" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <!-- tiny nose -->
+          <path d="M118 148 Q120 150 122 148" fill="none" stroke="#E0A88E" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- mouths -->
+          <path id="mouthSmall" d="M111 158 Q115.5 163 120 158 Q124.5 163 129 158" fill="none" stroke="#9C3A33" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="mouthBig">
+            <path d="M109 156 Q120 156 131 156 Q130 170 120 171 Q110 170 109 156 Z" fill="#B8453D"/>
+            <path d="M113 166 Q120 161 127 166 Q124 170 120 170 Q116 170 113 166 Z" fill="#F58C8C"/>
+          </g>
+          <!-- sunglasses perched on head -->
+          <g id="glasses">
+            <path d="M78 62 Q95 53 112 62 Q111 76 96 78 Q80 77 78 62 Z" fill="url(#lens)" stroke="#6B4A2E" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M128 62 Q145 53 162 62 Q160 77 144 78 Q129 76 128 62 Z" fill="url(#lens)" stroke="#6B4A2E" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M112 63 Q120 58 128 63" fill="none" stroke="#6B4A2E" stroke-width="3" stroke-linecap="round"/>
+            <path d="M86 62 L94 59" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+            <path d="M136 62 L144 59" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+          </g>
+          </g>
+          <!-- sparkles + heart on hover -->
+          <path class="spark" d="M34 70 L37 79 L46 82 L37 85 L34 94 L31 85 L22 82 L31 79 Z" fill="#F2B84B"/>
+          <path class="spark" d="M206 52 L208 58 L214 60 L208 62 L206 68 L204 62 L198 60 L204 58 Z" fill="#F2B84B"/>
+          <path class="spark" d="M200 104 C200 98 208 96 210 102 C212 96 220 98 220 104 C220 110 210 116 210 116 C210 116 200 110 200 104 Z" fill="#E0463B"/>
+          <path class="spark" d="M26 124 L28 129 L33 131 L28 133 L26 138 L24 133 L19 131 L24 129 Z" fill="#86A9DB"/>
+        </svg>
+      </button>
+      <ul class="orbit" id="orbit"></ul>
+      <div class="hint" data-i18n="hoverHint"></div>
+    </div>
+  </section>
+
+  <div class="readouts" id="readouts"></div>
+
+  <section class="block" id="explore">
+    <div class="sec-head">
+      <div><span class="mono" data-i18n="exploreEyebrow"></span><h2 data-i18n="exploreTitle"></h2></div>
+      <p data-i18n="exploreLead"></p>
+    </div>
+    <div class="channels" id="channels"></div>
+  </section>
+
+  <section class="block" id="trace">
+    <div class="sec-head">
+      <div><span class="mono" data-i18n="traceEyebrow"></span><h2 data-i18n="traceTitle"></h2></div>
+      <p data-i18n="traceLead"></p>
+    </div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+  </section>
+
+  <section class="block" id="keys">
+    <div class="sec-head">
+      <div><span class="mono" data-i18n="keysEyebrow"></span><h2 data-i18n="keysTitle"></h2></div>
+      <p data-i18n="keysLead"></p>
+    </div>
+    <div class="piano-wrap">
+      <div class="piano" id="piano"></div>
+      <div class="strength" id="strength" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <span class="mono" style="color:inherit;opacity:.6" data-i18n="contactEyebrow"></span>
+      <h2 data-i18n="contactTitle"></h2>
+      <p data-i18n="contactLead"></p>
+    </div>
+    <div class="clist" id="clist"></div>
+  </section>
+  <footer><span data-i18n="footL"></span><span data-i18n="footR"></span></footer>
+</main>
+
+<div id="modal" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const ICONS = {
+  edu:'<svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>',
+  intern:'<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg>',
+  projects:'<svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>',
+  lead:'<svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></svg>',
+  stage:'<svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>',
+  skills:'<svg viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>'
+};
+
+const T = {
+  en:{
+    navExplore:'Explore', navTrace:'Timeline', navKeys:'Strengths', navContact:'Contact',
+    eyebrow:'MSc Signal Processing & Machine Learning · Singapore',
+    nameMain:'Leyi Wang', nameSub:'王乐怡',
+    tagline:'Signal-processing student, <em>project manager by practice</em>, alto on stage. I turn fuzzy requirements into clear plans — and plans into things people can see, hear and use.',
+    seek:[['hot','Class of 2027 · open to full-time & internship roles'],['','Product & project management'],['','AI-oriented products'],['','Preferred locations: China / Singapore']],
+    scopeHint:'Move your cursor across the trace — you are tuning the frequency.',
+    hoverHint:'Hover over me to say hi',
+    readouts:[['5','mo','Project-management internship at Bosch'],['1,000','+','Gala attendees across three shows I led'],['16','','Teammates in my student-union department'],['Lv.','10','Piano — plus ballet Lv.5, folk dance Lv.7'],['7.0','','IELTS · CET-6 545']],
+    exploreEyebrow:'Six channels', exploreTitle:'Pick a channel, get the full story',
+    exploreLead:'The same six topics that pop out of my avatar. Open any one for the details — then flip through the rest with the arrows.',
+    traceEyebrow:'2022 → 2027', traceTitle:'The signal so far',
+    traceLead:'Four lanes, one timeline. Every bar and marker opens the story behind it.',
+    lanes:['Study','Build & work','Lead','Stage'], now:'NOW',
+    keysEyebrow:'Seven notes, seven strengths', keysTitle:'Play my strengths',
+    keysLead:'Each white key is one thing I’m good at, backed by something I actually did. Click a key, or use A S D F G H J.',
+    playScale:'Play the whole scale', seeIn:'See the evidence', noteWord:'Note',
+    contactEyebrow:'Say hello', contactTitle:'Let’s build something clear together',
+    contactLead:'Based in Singapore until May 2027. Happy to talk about product, project management or AI products.',
+    cEmail:'Email', cSG:'Mobile · Singapore', cCN:'Mobile · China', copy:'Copy', copied:'Copied', copyFail:'Select the text to copy it',
+    footL:'Leyi Wang · Nanyang Technological University', footR:'Built from my résumé · 2026',
+    close:'Close', prev:'Previous', next:'Next'
+  },
+  zh:{
+    navExplore:'探索', navTrace:'时间线', navKeys:'优势', navContact:'联系',
+    eyebrow:'南洋理工大学 · 信号处理与机器学习 硕士在读',
+    nameMain:'王乐怡', nameSub:'Leyi Wang',
+    tagline:'信号处理方向在读，<em>项目管理实战派</em>，舞台上的女低音。我擅长把模糊的需求拆成清晰的方案，再把方案变成看得见、听得到、用得上的成果。',
+    seek:[['hot','2027 届 · 秋招 / 实习求职中'],['','产品 / 项目管理'],['','AI 产品方向'],['','意向地点：中国 / 新加坡']],
+    scopeHint:'在波形上移动鼠标 —— 你正在调节它的频率。',
+    hoverHint:'把鼠标放在我身上打个招呼',
+    readouts:[['5','个月','博世项目管理实习'],['1000','+','我主导的三场晚会覆盖人次'],['16','人','我带领的学生会部门团队'],['钢琴','十级','另有芭蕾五级、民族舞七级'],['7.0','','雅思 · 英语六级 545']],
+    exploreEyebrow:'六个频道', exploreTitle:'选一个频道，看完整故事',
+    exploreLead:'和头像弹出的六个话题相同。点开任意一个查看详情，再用箭头翻看其余内容。',
+    traceEyebrow:'2022 → 2027', traceTitle:'一路走来的信号',
+    traceLead:'四条轨道，一条时间线。点击任意色条或标记，查看背后的经历。',
+    lanes:['学业','项目与实习','学生工作','舞台'], now:'现在',
+    keysEyebrow:'七个音符，七项优势', keysTitle:'弹一弹我的优势',
+    keysLead:'每个白键代表我的一项优势，并附上真实经历作为佐证。点击琴键，或按键盘 A S D F G H J。',
+    playScale:'弹奏完整音阶', seeIn:'查看相关经历', noteWord:'音符',
+    contactEyebrow:'打个招呼', contactTitle:'一起把事情做得清清楚楚',
+    contactLead:'2027 年 5 月前常驻新加坡。欢迎聊聊产品、项目管理或 AI 产品相关机会。',
+    cEmail:'邮箱', cSG:'手机 · 新加坡', cCN:'手机 · 中国', copy:'复制', copied:'已复制', copyFail:'请手动选中文字复制',
+    footL:'王乐怡 · 新加坡南洋理工大学', footR:'基于个人简历制作 · 2026',
+    close:'关闭', prev:'上一个', next:'下一个'
+  }
+};
+
+const CATS = [
+ {id:'edu',
+  en:{title:'Education',teaser:'NTU · Soochow University',summary:'MSc at NTU in signal processing & machine learning, after a BEng in Communication Engineering.',
+   blocks:[
+    {h:'Nanyang Technological University, Singapore',role:'MSc, Signal Processing & Machine Learning',meta:'Aug 2026 – May 2027 (expected)',
+     bullets:['Focus on signal processing, machine learning and large-language-model–related topics.','A working understanding of AI models — what they can do, where they break, and the constraints of shipping them — to support feasibility assessment for AI-oriented products.'],
+     tags:['Signal processing','Machine learning','LLMs']},
+    {h:'Soochow University, Suzhou',role:'BEng, Communication Engineering',meta:'Sep 2022 – Jun 2026',
+     bullets:['Core courses: Communication Electronic Circuits, Digital Signal Processing, Computer Communication & Networks, Communication Principles, Digital System & Logic Design, Signals & Systems, Analog Circuits, Microwave Technology & Antennas, Communication System Design & Practice.'],
+     tags:['GPA 3.3 / 4.0','IELTS 7.0','CET-6 545']}]},
+  zh:{title:'教育背景',teaser:'南洋理工 · 苏州大学',summary:'苏州大学通信工程本科，现于南洋理工大学攻读信号处理与机器学习硕士。',
+   blocks:[
+    {h:'新加坡南洋理工大学',role:'信号处理与机器学习 · 硕士',meta:'2026.08 – 2027.05（预计毕业）',
+     bullets:['主攻信号处理、机器学习、大模型相关方向。','具备 AI 模型基础认知，能够理解 AI 技术边界与落地约束，可支持 AI 产品的可行性评估。'],
+     tags:['信号处理','机器学习','大模型']},
+    {h:'苏州大学',role:'通信工程 · 本科',meta:'2022.09 – 2026.06',
+     bullets:['主修课程：通信电子线路、数字信号处理、计算机通信与网络、通信原理、数字系统与逻辑设计、电子线路实验、信号与系统、模拟电路、微波技术与天线、通信系统设计与实践等。'],
+     tags:['GPA 3.3 / 4.0','雅思 7.0','英语六级 545']}]}},
+ {id:'intern',
+  en:{title:'Internship',teaser:'Bosch · Project Management',summary:'Five months on automotive airbag-sensor projects at Bosch, working between OEM customers and in-house teams.',
+   blocks:[{h:'Bosch (China) Investment Ltd.',role:'Project Management Intern · Automotive Components Division',meta:'Feb 2026 – Jul 2026',
+     bullets:['Supported airbag-sensor (acceleration & pressure) projects with domestic OEMs on variant development: collected requirements, aligned stakeholder expectations and assessed feasibility.','Produced standardized business documentation and process drawings, so every requirement had a traceable record for review and cross-team iteration.','Coordinated R&D, manufacturing and supply-chain teams — tracked milestones, flagged schedule risks early, and followed a hardware product from requirement to launch.'],
+     tags:['OEM requirements','Cross-functional coordination','Risk tracking','Documentation']}]},
+  zh:{title:'实习经历',teaser:'博世 · 项目管理',summary:'在博世参与汽车气囊传感器项目，连接主机厂客户与内部多个团队。',
+   blocks:[{h:'博世（中国）投资有限公司',role:'零部件项目管理实习生',meta:'2026.02 – 2026.07',
+     bullets:['参与汽车周边气囊传感器（加速度、压力）相关项目支持工作，对接国内 OEM 厂商变体开发项目，收集业务需求并评估可行性。','输出标准化业务文档与工艺图纸，对齐多方对需求的理解，为需求评审和跨团队迭代留下可追溯记录。','跨部门协同研发、工艺、供应链团队，跟进项目节点、识别进度风险，完整理解产品从需求到落地的全流程。'],
+     tags:['OEM 需求对接','跨部门协同','风险识别','标准化文档']}]}},
+ {id:'projects',
+  en:{title:'Projects',teaser:'OpenCV · EDA · MCU',summary:'From radiotherapy image analysis to a hand-built multi-function timer.',
+   blocks:[
+    {h:'OpenCV-Based Radiotherapy Source Positioning Accuracy Analysis',role:'Project Lead',meta:'Nov 2023 – Nov 2024',
+     bullets:['Given the planned dwell positions of an afterloading source, recorded the dose on radiochromic film, scanned the films and extracted radiation-spot coordinates with OpenCV.','Compared spot positions with the preset locations to quantify source positioning accuracy.','Owned the timeline, task split, data-precision processing and the final presentation.'],
+     tags:['OpenCV','Image processing','Project lead']},
+    {h:'EDA Circuit Design — 16th Blue Bridge Cup (Electronics)',role:'Provincial Second Prize',meta:'Apr 2025',
+     bullets:['Designed circuits to spec in JLCEDA, planned layout and routing, analysed circuit performance and iterated on the design.'],
+     tags:['JLCEDA','PCB layout','Competition']},
+    {h:'51 MCU Multi-Function Timer & Real-Time Clock',role:'Independent build',meta:'Jun 2025',
+     bullets:['Started from user scenarios and requirements, assessed feasibility, then designed the system in modules.','Built on an STC51 MCU with a DS1302 clock chip and LCD1602 screen: real-time clock, stopwatch, audio-light alarm, step counting and heart-rate / SpO₂ sensing.','Wrote the drivers and calibrated timing myself — a full requirement → design → build → verify loop.'],
+     tags:['C','Embedded','RTC']}]},
+  zh:{title:'专业实践',teaser:'OpenCV · EDA · 单片机',summary:'从放疗图像分析，到亲手搭建的多功能计时器。',
+   blocks:[
+    {h:'基于 OpenCV 的后装治疗机放射源到位精度分析研究',role:'项目主持人',meta:'2023.11 – 2024.11',
+     bullets:['给定源的驻留位置，利用胶片感应源放射剂量，扫描得到放射胶片图像，并用 OpenCV 提取光斑坐标。','比较光斑位置与预设驻留位置，确定放射源到位精度。','负责项目进度管理、协调分工、数据精度处理、成果输出与终期汇报。'],
+     tags:['OpenCV','图像处理','项目主持']},
+    {h:'第十六届蓝桥杯全国软件和信息技术专业人才大赛（电子赛）',role:'EDA 设计与开发 · 省赛二等奖',meta:'2025.04',
+     bullets:['灵活运用嘉立创 EDA 完成指定要求的电路设计，合理规划布局布线，完整分析电路性能并进行方案迭代。'],
+     tags:['嘉立创 EDA','PCB 布局','竞赛获奖']},
+    {h:'基于 51 单片机的多功能计时器设计',role:'独立完成',meta:'2025.06',
+     bullets:['分析用户使用场景与功能需求，评估项目可行性，采用模块化思路完成方案设计。','以 STC51 单片机为核心，配合 DS1302 时钟芯片与 LCD1602 屏幕，实现实时时钟、计时、声光闹钟、计步、心率血氧采集等功能。','独立完成驱动编写与时间校准，走通需求—方案—实现—验证的完整流程。'],
+     tags:['C 语言','嵌入式','RTC']}]}},
+ {id:'lead',
+  en:{title:'Leadership',teaser:'Student Union · 16-person team',summary:'Ran the Cultural & Entertainment Department: three galas, 1,000+ attendees.',
+   blocks:[{h:'Head, Cultural & Entertainment Department',role:'Student Union, School of Electronic Information, Soochow University',meta:'Sep 2024 – Jun 2025',
+     bullets:['Planned and delivered the school’s large cultural events, leading three major galas with 1,000+ total attendees.','Managed a 16-member team: split goals into workstreams, designed the run-of-show process and prepared risk contingencies.','Kept information flowing both ways between union leadership and the team.'],
+     tags:['Outstanding Student Union Staff 2023–24','Excellent Student Union Cadre 2024–25 (university level)']}]},
+  zh:{title:'学生工作',teaser:'学生会 · 16 人团队',summary:'统筹学院文娱部：三场大型晚会，覆盖 1000 人次。',
+   blocks:[{h:'文娱部部长',role:'苏州大学电子信息学院学生会',meta:'2024.09 – 2025.06',
+     bullets:['统筹院内大型文化活动策划与落地，主导三场大型文艺晚会，覆盖参与人数 1000 人次。','管理 16 人部门团队，进行工作分配，领导完成目标拆解、流程设计与风险预案。','信息上传下达，保证学生会与部门之间沟通顺畅。'],
+     tags:['2023-2024 学年学生会优秀工作人员','2024-2025 学年校级优秀学生会骨干']}]}},
+ {id:'stage',
+  en:{title:'On Stage',teaser:'Choir · Piano · Dance',summary:'Alto section leader who sang at the national arts finals; Piano Level 10.',
+   blocks:[
+    {h:'7th National College Students’ Arts Exhibition',role:'Vocal Performance — First Prize',meta:'Jun 2024',
+     bullets:['Alto section leader of the Dongwu Choir.','The choir won the top award (Special Prize) in Group A at the provincial round, then performed at the national finals in Xiangyang, Hubei.'],
+     tags:['Alto section leader','National finals']},
+    {h:'Music & dance since childhood',role:'Performer · writer · host',meta:'',
+     bullets:['Piano — Level 10, the highest amateur grade.','Ballet — Level 5; Chinese folk dance — Level 7.','Writes event copy and hosting scripts, and hosts on stage.'],
+     tags:['Piano Lv.10','Ballet Lv.5','Folk dance Lv.7','Event hosting']}]},
+  zh:{title:'舞台与艺术',teaser:'合唱 · 钢琴 · 舞蹈',summary:'女低声部长，登上全国大艺展舞台；钢琴十级。',
+   blocks:[
+    {h:'全国第七届大学生艺术展演',role:'声乐一等奖',meta:'2024.06',
+     bullets:['担任东吴合唱团女低声部长。','随团取得同届大艺展省赛合唱甲组特等奖，赴湖北襄阳参加全国展演。'],
+     tags:['女低声部长','全国展演']},
+    {h:'从小练就的舞台功底',role:'表演 · 写作 · 主持',meta:'',
+     bullets:['钢琴十级。','芭蕾舞五级、民族舞七级。','擅长撰写推文与主持稿，也能站上台主持。'],
+     tags:['钢琴十级','芭蕾五级','民族舞七级','活动主持']}]}},
+ {id:'skills',
+  en:{title:'Skills',teaser:'C++ · Matlab · EDA',summary:'Engineering fluency, plus the working habits that get it delivered.',
+   blocks:[
+    {h:'Technical',role:'',meta:'',bullets:['C/C++ and Matlab programming.','Foundations in signal processing and machine learning.','Hands-on experimental data processing and analysis.'],tags:['C/C++','Matlab','OpenCV']},
+    {h:'Tools',role:'',meta:'',bullets:[],tags:['Microsoft Office','Visual Studio','Altium Designer','JLCEDA']},
+    {h:'Ways of working',role:'',meta:'',bullets:[],tags:['Requirement breakdown','Cross-team collaboration','Schedule control','Documentation','Presentation','Hosting & copywriting']},
+    {h:'Languages',role:'',meta:'',bullets:[],tags:['English — IELTS 7.0, CET-6 545','Mandarin — native']}]},
+  zh:{title:'技能与特长',teaser:'C++ · Matlab · EDA',summary:'扎实的工程基础，加上让它落地的工作方法。',
+   blocks:[
+    {h:'技术基础',role:'',meta:'',bullets:['熟悉 C/C++、Matlab 编程。','具备信号处理与机器学习基础。','具备实验数据处理分析经验。'],tags:['C/C++','Matlab','OpenCV']},
+    {h:'工具',role:'',meta:'',bullets:[],tags:['Office 套件','Visual Studio','Altium Designer','嘉立创 EDA']},
+    {h:'软技能',role:'',meta:'',bullets:[],tags:['需求梳理拆解','跨团队沟通协作','项目进度管控','文档撰写','汇报演示','推文与主持稿']},
+    {h:'语言',role:'',meta:'',bullets:[],tags:['英语 — 雅思 7.0、六级 545','中文 — 母语']}]}}
+];
+
+const KEYS = [
+ {n:'C',s:'Do',f:261.63,k:'a',cat:'intern',en:['Breaking down requirements','At Bosch I turned OEM variant requests into standardized, traceable documents. On my MCU timer I ran the full requirement → design → build → verify loop myself.'],zh:['需求拆解','在博世把 OEM 变体需求整理成标准化、可追溯的业务文档；做单片机计时器时，独立走通了需求—方案—实现—验证的完整流程。']},
+ {n:'D',s:'Re',f:293.66,k:'s',cat:'intern',en:['Getting teams to line up','Coordinated R&D, manufacturing and supply chain at Bosch so everyone read the same requirement the same way.'],zh:['跨团队协同','在博世协同研发、工艺、供应链团队，确保各方对同一需求的理解一致。']},
+ {n:'E',s:'Mi',f:329.63,k:'d',cat:'lead',en:['Schedules & risk','Tracked milestones and flagged schedule risks early at Bosch; wrote risk contingencies for three live galas.'],zh:['进度与风险','在博世跟进项目节点、提前识别进度风险；为三场大型晚会制定风险预案。']},
+ {n:'F',s:'Fa',f:349.23,k:'f',cat:'lead',en:['Leading people','Led a 16-person student-union department through three galas and 1,000+ attendees; named an Excellent Student Union Cadre.'],zh:['带领团队','带领 16 人部门完成三场晚会、覆盖 1000 人次，获评校级优秀学生会骨干。']},
+ {n:'G',s:'Sol',f:392.00,k:'g',cat:'edu',en:['Technical fluency','Communication engineering plus signal processing & ML at NTU: I can talk with engineers about what a circuit or a model can and can’t do.'],zh:['技术理解力','通信工程背景 + 南洋理工信号处理与机器学习：能和工程师讨论电路与模型的能力边界。']},
+ {n:'A',s:'La',f:440.00,k:'h',cat:'projects',en:['Clear communication','Owned the final presentation as a project lead, and writes event copy and hosting scripts.'],zh:['表达与呈现','作为项目主持人负责终期汇报；擅长撰写推文与主持稿。']},
+ {n:'B',s:'Si',f:493.88,k:'j',cat:'stage',en:['Calm under the lights','Sang at the national arts finals as alto section leader. Piano Level 10 and years of dance make pressure feel familiar.'],zh:['舞台定力','以女低声部长身份登上全国大艺展；钢琴十级与多年舞蹈训练，让我在压力下依然从容。']}
+];
+const BLACK = [{after:0,f:277.18},{after:1,f:311.13},{after:3,f:369.99},{after:4,f:415.30},{after:5,f:466.16}];
+
+/* timeline: months from 2022-09 */
+const M0 = 2022*12+8, M1 = 2027*12+6;
+const mi = (y,m)=> (y*12+m-1-M0)/(M1-M0)*100;
+const EVENTS = [
+ {lane:0,cat:'edu',a:[2022,9],b:[2026,6],en:'BEng · Soochow University',zh:'本科 · 苏州大学'},
+ {lane:0,cat:'edu',a:[2026,8],b:[2027,5],en:'MSc · NTU',zh:'硕士 · 南洋理工'},
+ {lane:1,cat:'projects',a:[2023,11],b:[2024,11],en:'OpenCV radiotherapy study',zh:'OpenCV 放射源精度研究'},
+ {lane:1,cat:'projects',a:[2025,4],en:'Blue Bridge Cup',zh:'蓝桥杯省二',pos:'up'},
+ {lane:1,cat:'projects',a:[2025,6],en:'51 MCU timer',zh:'51 单片机计时器',pos:'down'},
+ {lane:1,cat:'intern',a:[2026,2],b:[2026,7],en:'Bosch',zh:'博世实习'},
+ {lane:2,cat:'lead',a:[2024,9],b:[2025,6],en:'Head of Culture & Events',zh:'文娱部部长'},
+ {lane:3,cat:'stage',a:[2024,6],en:'National Arts Exhibition · 1st prize',zh:'全国大艺展 · 声乐一等奖',pos:'up'}
+];
+
+let lang = 'en';
+try{ const s = localStorage.getItem('leyi-lang'); if(s==='en'||s==='zh') lang=s; else if((navigator.language||'').toLowerCase().startsWith('zh')) lang='zh'; }catch(e){ if((navigator.language||'').toLowerCase().startsWith('zh')) lang='zh'; }
+
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let selKey = 0;
+
+function render(){
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t[el.dataset.i18n]; });
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.lang===lang));
+  $('#nameMain').textContent = t.nameMain; $('#nameSub').textContent = t.nameSub;
+  $('#tagline').innerHTML = t.tagline;
+  $('#seek').innerHTML = t.seek.map(([c,x])=>`<span class="chip ${c}">${esc(x)}</span>`).join('');
+  $('#readouts').innerHTML = t.readouts.map(([v,u,l])=>`<div class="ro"><div class="v">${esc(v)}<small>${esc(u)}</small></div><div class="l">${esc(l)}</div></div>`).join('');
+
+  // orbit bubbles
+  const angles = [-90,-30,30,90,150,210];
+  $('#orbit').innerHTML = CATS.map((c,i)=>{
+    const a = angles[i]*Math.PI/180, r = 39;
+    return `<li class="bubble" style="--i:${i};--dx:${(Math.cos(a)*r).toFixed(2)}cqw;--dy:${(Math.sin(a)*r).toFixed(2)}cqw">
+      <button type="button" data-open="${c.id}"><span class="ic">${ICONS[c.id]}</span><span><span class="t">${esc(c[lang].title)}</span><span class="s">${esc(c[lang].teaser)}</span></span></button></li>`;
+  }).join('');
+
+  $('#channels').innerHTML = CATS.map(c=>`<button class="ch" type="button" data-open="${c.id}">
+    <span class="ch-top"><h3>${esc(c[lang].title)}</h3><span class="ic">${ICONS[c.id]}</span></span>
+    <p>${esc(c[lang].summary)}</p><span class="more">${lang==='en'?'Open channel →':'打开频道 →'}</span></button>`).join('');
+
+  // timeline
+  let h = '';
+  t.lanes.forEach((name,li)=>{
+    h += `<div class="tl-lane-name">${esc(name)}</div><div class="tl-track">`;
+    EVENTS.filter(e=>e.lane===li).forEach(e=>{
+      const L = mi(...e.a);
+      if(e.b){ const W = mi(e.b[0],e.b[1]+1)-L;
+        h += `<button type="button" class="tl-bar c-${e.cat}" data-open="${e.cat}" style="left:${L}%;width:${W}%" title="${esc(e[lang])}">${esc(e[lang])}</button>`;
+      } else {
+        h += `<button type="button" class="tl-pt ${e.pos||'up'}" data-open="${e.cat}" style="left:${L+ (mi(2000,2)-mi(2000,1))/2}%" aria-label="${esc(e[lang])}"><span>${esc(e[lang])}</span></button>`;
+      }
+    });
+    if(li===0){ const now=new Date(); h += `<div class="tl-now" style="left:${mi(now.getFullYear(),now.getMonth()+1)}%" data-label="${t.now}"></div>`; }
+    h += `</div>`;
+  });
+  h += `<div class="tl-axis">${[2023,2024,2025,2026,2027].map(y=>`<span style="left:${mi(y,1)}%">${y}</span>`).join('')}</div>`;
+  $('#tl').innerHTML = h;
+
+  // piano
+  const keyLabels = lang==='en' ? KEYS.map(k=>k.n) : KEYS.map(k=>k.s);
+  $('#piano').innerHTML = KEYS.map((k,i)=>`<button type="button" class="wkey${i===selKey?' sel':''}" data-key="${i}" aria-label="${esc(k[lang][0])}"><span class="n">${keyLabels[i]}</span><span class="k">${k.k.toUpperCase()}</span></button>`).join('')
+    + BLACK.map((b,i)=>`<span class="bkey" data-black="${i}" style="left:calc(14px + (100% - 28px) * ${(b.after+1)/7})"></span>`).join('');
+  renderStrength(false);
+
+  // contact
+  $('#clist').innerHTML = [[t.cEmail,'1746424473@qq.com'],[t.cSG,'+65 9467 5047'],[t.cCN,'+86 151 6144 0379']]
+    .map(([l,v])=>`<div class="crow"><div><span class="lbl">${esc(l)}</span><span class="val">${esc(v)}</span></div><button type="button" data-copy="${esc(v)}">${esc(t.copy)}</button></div>`).join('');
+
+  if(!$('#modal').hidden) renderModal();
+}
+
+function renderStrength(flash){
+  const k = KEYS[selKey], t = T[lang], cat = CATS.find(c=>c.id===k.cat);
+  const box = $('#strength');
+  box.innerHTML = `<span class="note">${t.noteWord} ${k.n} · ${k.s} · ${k.f.toFixed(2)} Hz</span><h3>${esc(k[lang][0])}</h3><p>${esc(k[lang][1])}</p>
+    <div class="row"><button type="button" class="btn solid" data-open="${k.cat}">${esc(t.seeIn)} · ${esc(cat[lang].title)}</button><button type="button" class="btn" id="playScale">${esc(t.playScale)}</button></div>`;
+  if(flash){ box.classList.remove('flash'); void box.offsetWidth; box.classList.add('flash'); }
+}
+
+/* audio */
+let actx;
+function tone(f,dur=1.1){
+  try{
+    actx = actx || new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended') actx.resume();
+    const t0 = actx.currentTime, g = actx.createGain();
+    g.gain.setValueAtTime(0,t0); g.gain.linearRampToValueAtTime(.22,t0+.01); g.gain.exponentialRampToValueAtTime(.001,t0+dur);
+    g.connect(actx.destination);
+    [[1,'triangle',1],[2,'sine',.35],[3,'sine',.12]].forEach(([m,type,v])=>{
+      const o = actx.createOscillator(), og = actx.createGain(); o.type=type; o.frequency.value=f*m; og.gain.value=v;
+      o.connect(og).connect(g); o.start(t0); o.stop(t0+dur);
+    });
+  }catch(e){}
+}
+function pressKey(i){
+  selKey = i; tone(KEYS[i].f); scopeFreq = 1 + i*.45;
+  document.querySelectorAll('.wkey').forEach((el,j)=>{ el.classList.toggle('sel',j===i); if(j===i){ el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),160);} });
+  renderStrength(true);
+}
+let scaleTimer;
+function playScale(){
+  clearTimeout(scaleTimer); let i=0;
+  const step=()=>{ pressKey(i); i++; if(i<KEYS.length) scaleTimer=setTimeout(step,420); };
+  step();
+}
+
+/* modal */
+let modalIdx = 0, lastFocus = null;
+function openModal(id){
+  modalIdx = Math.max(0,CATS.findIndex(c=>c.id===id));
+  lastFocus = document.activeElement;
+  $('#modal').hidden = false; renderModal();
+  $('#modal .m-close').focus();
+  document.body.style.overflow='hidden';
+}
+function closeModal(){ $('#modal').hidden = true; document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+function renderModal(){
+  const c = CATS[modalIdx], d = c[lang], t = T[lang];
+  $('#modal').innerHTML = `<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="m-head"><span class="ic">${ICONS[c.id]}</span><div><div class="count">${String(modalIdx+1).padStart(2,'0')} / 06</div><h3 id="mTitle">${esc(d.title)}</h3></div>
+      <div class="m-nav"><button type="button" data-step="-1" aria-label="${t.prev}">←</button><button type="button" data-step="1" aria-label="${t.next}">→</button><button type="button" class="m-close" aria-label="${t.close}">✕</button></div></div>
+    <div class="m-body">${d.blocks.map(b=>`<div class="m-block">
+      ${b.meta?`<div class="meta">${esc(b.meta)}</div>`:''}<h4>${esc(b.h)}</h4>${b.role?`<div class="role">${esc(b.role)}</div>`:''}
+      ${b.bullets.length?`<ul>${b.bullets.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+      ${b.tags.length?`<div class="tags">${b.tags.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:''}</div>`).join('')}</div></div></div>`;
+}
+
+/* events */
+document.addEventListener('click',e=>{
+  const lb = e.target.closest('.lang button');
+  if(lb){ lang = lb.dataset.lang; try{localStorage.setItem('leyi-lang',lang)}catch(_){ } render(); return; }
+  const op = e.target.closest('[data-open]'); if(op){ openModal(op.dataset.open); return; }
+  const st = e.target.closest('[data-step]'); if(st){ modalIdx=(modalIdx+ +st.dataset.step+CATS.length)%CATS.length; renderModal(); $('#modal [data-step="'+st.dataset.step+'"]').focus(); return; }
+  if(e.target.closest('.m-close') || e.target.hasAttribute('data-scrim')){ closeModal(); return; }
+  const wk = e.target.closest('.wkey'); if(wk){ pressKey(+wk.dataset.key); return; }
+  const bk = e.target.closest('.bkey'); if(bk){ tone(BLACK[+bk.dataset.black].f); bk.classList.add('on'); setTimeout(()=>bk.classList.remove('on'),160); return; }
+  if(e.target.closest('#playScale')){ playScale(); return; }
+  const cp = e.target.closest('[data-copy]');
+  if(cp){ const v = cp.dataset.copy;
+    const done = ok=>toast(ok?T[lang].copied:T[lang].copyFail);
+    try{ navigator.clipboard.writeText(v).then(()=>done(true),()=>{selectVal(cp);done(false)}); }catch(_){ selectVal(cp); done(false); }
+  }
+});
+function selectVal(btn){ const el = btn.parentElement.querySelector('.val'); const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+let toastT; function toast(m){ const el=$('#toast'); el.textContent=m; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>el.hidden=true,1600); }
+
+document.addEventListener('keydown',e=>{
+  if(!$('#modal').hidden){
+    if(e.key==='Escape') closeModal();
+    if(e.key==='ArrowRight'){ modalIdx=(modalIdx+1)%CATS.length; renderModal(); }
+    if(e.key==='ArrowLeft'){ modalIdx=(modalIdx+CATS.length-1)%CATS.length; renderModal(); }
+    return;
+  }
+  if(e.target.matches('input,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+  const i = KEYS.findIndex(k=>k.k===e.key.toLowerCase());
+  if(i>=0 && !e.repeat) pressKey(i);
+});
+
+/* avatar stage: hover/focus/tap */
+const stage = $('#stage'), avatarBtn = $('#avatarBtn');
+let closeT;
+function setOpen(v){ clearTimeout(closeT); stage.classList.toggle('open',v); avatarBtn.setAttribute('aria-expanded',v); }
+avatarBtn.addEventListener('mouseenter',()=>setOpen(true));
+stage.addEventListener('mouseenter',()=>clearTimeout(closeT));
+stage.addEventListener('mouseleave',()=>{ closeT=setTimeout(()=>setOpen(false),350); });
+avatarBtn.addEventListener('click',()=>setOpen(!stage.classList.contains('open')));
+stage.addEventListener('focusin',()=>setOpen(true));
+stage.addEventListener('focusout',e=>{ if(!stage.contains(e.relatedTarget)) closeT=setTimeout(()=>setOpen(false),200); });
+
+/* eyes follow pointer */
+const pupils = document.getElementById('pupils');
+window.addEventListener('pointermove',e=>{
+  const r = avatarBtn.getBoundingClientRect();
+  const cx = r.left + r.width/2, cy = r.top + r.height*.48;
+  const dx = e.clientX-cx, dy = e.clientY-cy, d = Math.hypot(dx,dy)||1, m = Math.min(3.2,d/60);
+  pupils.setAttribute('transform',`translate(${(dx/d*m).toFixed(2)} ${(dy/d*m*.8).toFixed(2)})`);
+});
+
+/* oscilloscope */
+const cv = $('#wave'), cx2 = cv.getContext('2d');
+let scopeFreq = 2, curFreq = 2, colors = {};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function readColors(){ const s=getComputedStyle(document.documentElement); colors={line:s.getPropertyValue('--denim').trim(),red:s.getPropertyValue('--red').trim(),grid:s.getPropertyValue('--line').trim()}; }
+readColors(); matchMedia('(prefers-color-scheme: dark)').addEventListener('change',readColors);
+new MutationObserver(readColors).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+function sizeCanvas(){ const dpr=devicePixelRatio||1; cv.width=cv.clientWidth*dpr; cv.height=cv.clientHeight*dpr; cx2.setTransform(dpr,0,0,dpr,0,0); }
+sizeCanvas(); addEventListener('resize',sizeCanvas);
+cv.addEventListener('pointermove',e=>{ const r=cv.getBoundingClientRect(); scopeFreq = .8 + (e.clientX-r.left)/r.width*4.2; });
+let tt = 0;
+function draw(){
+  const w=cv.clientWidth, h=cv.clientHeight; cx2.clearRect(0,0,w,h);
+  cx2.strokeStyle=colors.grid; cx2.lineWidth=1; cx2.beginPath();
+  for(let x=0;x<=w;x+=w/10){cx2.moveTo(x,0);cx2.lineTo(x,h);} for(let y=0;y<=h;y+=h/4){cx2.moveTo(0,y);cx2.lineTo(w,y);} cx2.stroke();
+  curFreq += (scopeFreq-curFreq)*.08;
+  const trace=(amp,ph,col,lw)=>{ cx2.strokeStyle=col; cx2.lineWidth=lw; cx2.beginPath();
+    for(let x=0;x<=w;x+=2){ const u=x/w; const y=h/2 - amp*h*.38*(Math.sin(2*Math.PI*curFreq*u*2 - tt + ph)*.75 + Math.sin(2*Math.PI*curFreq*u*6 - tt*1.7+ph)*.25)*(.55+.45*Math.sin(Math.PI*u)); x?cx2.lineTo(x,y):cx2.moveTo(x,y);} cx2.stroke(); };
+  trace(.55,1.3,colors.red,1.4); trace(1,0,colors.line,2.2);
+  $('#scopeF').textContent = `f = ${curFreq.toFixed(1)} Hz`;
+  if(!reduce){ tt += .05; requestAnimationFrame(draw); }
+}
+render(); draw();
+</script>
+
+</body>
+</html>
