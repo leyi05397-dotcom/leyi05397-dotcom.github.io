@@ -70,6 +70,7 @@ html[lang="zh"] .name-sub{font-family:var(--f-display);font-weight:600;letter-sp
 .tagline{font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:34em;color:var(--ink);margin:20px 0 0}
 .tagline em{font-style:normal;background:linear-gradient(transparent 62%,var(--honey-soft) 62%)}
 .seek{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.seek .brk{flex-basis:100%;height:0}
 .chip{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
 .chip.hot{border-color:var(--red);color:var(--red);background:var(--red-soft)}
 
@@ -444,11 +445,11 @@ const T = {
     navExplore:'Explore', navTrace:'Timeline', navKeys:'Strengths', navContact:'Contact',
     eyebrow:'MSc Signal Processing & Machine Learning · Singapore',
     nameMain:'Leyi Wang', nameSub:'王乐怡',
-    tagline:'Signal-processing student, <em>project manager by practice</em>, alto on stage. I turn fuzzy requirements into clear plans — and plans into things people can see, hear and use.',
-    seek:[['hot','Class of 2027 · open to full-time & internship roles'],['','Product & project management'],['','AI-oriented products'],['','Preferred locations: China / Singapore']],
+    tagline:'Engineer by training, <em>project manager by practice</em>. In my internship I turned OEM requests into plans that R&amp;D, manufacturing and supply chain could all sign off on; at university I led a 16-person team through three galas for 1,000+ guests. Now studying signal processing &amp; ML at NTU, I want to be the one who translates between engineers and the business — and carries ideas all the way to delivery.',
+    seek:[['hot','Class of 2027 · open to full-time & internship roles'],['br'],['','Product manager (AI focus)'],['','Project management'],['','Solutions engineer'],['br'],['','Preferred locations: China / Singapore']],
     scopeHint:'Move your cursor across the trace — you are tuning the frequency.',
     hoverHint:'Hover over me to say hi',
-    readouts:[['5','mo','Project-management internship at Bosch'],['1,000','+','Gala attendees across three shows I led'],['16','','Teammates in my student-union department'],['Lv.','10','Piano — plus ballet Lv.5, folk dance Lv.7'],['7.0','','IELTS · CET-6 545']],
+    readouts:[['5','mo','Project-management internship'],['1,000','+','Gala attendees across three shows I led'],['16','','Teammates in my student-union department'],['Lv.','10','Piano — plus ballet Lv.5, folk dance Lv.7'],['7.0','','IELTS · CET-6 545']],
     exploreEyebrow:'Six channels', exploreTitle:'Pick a channel, get the full story',
     exploreLead:'The same six topics that pop out of my avatar. Open any one for the details — then flip through the rest with the arrows.',
     traceEyebrow:'2022 → 2027', traceTitle:'The signal so far',
@@ -458,7 +459,7 @@ const T = {
     keysLead:'Each white key is one thing I’m good at, backed by something I actually did. Click a key, or use A S D F G H J.',
     playScale:'Play the whole scale', seeIn:'See the evidence', noteWord:'Note',
     contactEyebrow:'Say hello', contactTitle:'Let’s build something clear together',
-    contactLead:'Based in Singapore until May 2027. Happy to talk about product, project management or AI products.',
+    contactLead:'Based in Singapore until May 2027. Happy to talk about AI product, project management or solutions engineering roles.',
     cEmail:'Email', cSG:'Mobile · Singapore', cCN:'Mobile · China', copy:'Copy', copied:'Copied', copyFail:'Select the text to copy it',
     footL:'Leyi Wang · Nanyang Technological University', footR:'Built from my résumé · 2026',
     close:'Close', prev:'Previous', next:'Next'
@@ -467,11 +468,11 @@ const T = {
     navExplore:'探索', navTrace:'时间线', navKeys:'优势', navContact:'联系',
     eyebrow:'南洋理工大学 · 信号处理与机器学习 硕士在读',
     nameMain:'王乐怡', nameSub:'Leyi Wang',
-    tagline:'信号处理方向在读，<em>项目管理实战派</em>，舞台上的女低音。我擅长把模糊的需求拆成清晰的方案，再把方案变成看得见、听得到、用得上的成果。',
-    seek:[['hot','2027 届 · 秋招 / 实习求职中'],['','产品 / 项目管理'],['','AI 产品方向'],['','意向地点：中国 / 新加坡']],
+    tagline:'工科出身，<em>项目管理实战派</em>。实习中，我把主机厂的需求拆解成研发、工艺、供应链都能对齐的方案；在学生会，我带领 16 人团队办成三场晚会，覆盖千余人次。如今在南洋理工攻读信号处理与机器学习，我想做工程师与业务之间的“翻译官”，把想法一步步推到落地。',
+    seek:[['hot','2027 届 · 秋招 / 实习求职中'],['br'],['','产品经理（AI 方向）'],['','项目管理'],['','解决方案工程师'],['br'],['','意向地点：中国 / 新加坡']],
     scopeHint:'在波形上移动鼠标 —— 你正在调节它的频率。',
     hoverHint:'把鼠标放在我身上打个招呼',
-    readouts:[['5','个月','博世项目管理实习'],['1000','+','我主导的三场晚会覆盖人次'],['16','人','我带领的学生会部门团队'],['钢琴','十级','另有芭蕾五级、民族舞七级'],['7.0','','雅思 · 英语六级 545']],
+    readouts:[['5','个月','项目管理实习'],['1000','+','我主导的三场晚会覆盖人次'],['16','人','我带领的学生会部门团队'],['钢琴','十级','另有芭蕾五级、民族舞七级'],['7.0','','雅思 · 英语六级 545']],
     exploreEyebrow:'六个频道', exploreTitle:'选一个频道，看完整故事',
     exploreLead:'和头像弹出的六个话题相同。点开任意一个查看详情，再用箭头翻看其余内容。',
     traceEyebrow:'2022 → 2027', traceTitle:'一路走来的信号',
@@ -481,7 +482,7 @@ const T = {
     keysLead:'每个白键代表我的一项优势，并附上真实经历作为佐证。点击琴键，或按键盘 A S D F G H J。',
     playScale:'弹奏完整音阶', seeIn:'查看相关经历', noteWord:'音符',
     contactEyebrow:'打个招呼', contactTitle:'一起把事情做得清清楚楚',
-    contactLead:'2027 年 5 月前常驻新加坡。欢迎聊聊产品、项目管理或 AI 产品相关机会。',
+    contactLead:'2027 年 5 月前常驻新加坡。欢迎聊聊 AI 产品、项目管理或解决方案工程师相关机会。',
     cEmail:'邮箱', cSG:'手机 · 新加坡', cCN:'手机 · 中国', copy:'复制', copied:'已复制', copyFail:'请手动选中文字复制',
     footL:'王乐怡 · 新加坡南洋理工大学', footR:'基于个人简历制作 · 2026',
     close:'关闭', prev:'上一个', next:'下一个'
@@ -507,11 +508,11 @@ const CATS = [
      bullets:['主修课程：通信电子线路、数字信号处理、计算机通信与网络、通信原理、数字系统与逻辑设计、电子线路实验、信号与系统、模拟电路、微波技术与天线、通信系统设计与实践等。'],
      tags:['GPA 3.3 / 4.0','雅思 7.0','英语六级 545']}]}},
  {id:'intern',
-  en:{title:'Internship',teaser:'Bosch · Project Management',summary:'Five months on automotive airbag-sensor projects at Bosch, working between OEM customers and in-house teams.',
+  en:{title:'Internship',teaser:'Project Management Intern',summary:'Five months on automotive airbag-sensor projects, working between OEM customers and in-house teams.',
    blocks:[{h:'Bosch (China) Investment Ltd.',role:'Project Management Intern · Automotive Components Division',meta:'Feb 2026 – Jul 2026',
      bullets:['Supported airbag-sensor (acceleration & pressure) projects with domestic OEMs on variant development: collected requirements, aligned stakeholder expectations and assessed feasibility.','Produced standardized business documentation and process drawings, so every requirement had a traceable record for review and cross-team iteration.','Coordinated R&D, manufacturing and supply-chain teams — tracked milestones, flagged schedule risks early, and followed a hardware product from requirement to launch.'],
      tags:['OEM requirements','Cross-functional coordination','Risk tracking','Documentation']}]},
-  zh:{title:'实习经历',teaser:'博世 · 项目管理',summary:'在博世参与汽车气囊传感器项目，连接主机厂客户与内部多个团队。',
+  zh:{title:'实习经历',teaser:'项目管理实习',summary:'参与汽车气囊传感器项目，连接主机厂客户与内部多个团队。',
    blocks:[{h:'博世（中国）投资有限公司',role:'零部件项目管理实习生',meta:'2026.02 – 2026.07',
      bullets:['参与汽车周边气囊传感器（加速度、压力）相关项目支持工作，对接国内 OEM 厂商变体开发项目，收集业务需求并评估可行性。','输出标准化业务文档与工艺图纸，对齐多方对需求的理解，为需求评审和跨团队迭代留下可追溯记录。','跨部门协同研发、工艺、供应链团队，跟进项目节点、识别进度风险，完整理解产品从需求到落地的全流程。'],
      tags:['OEM 需求对接','跨部门协同','风险识别','标准化文档']}]}},
@@ -580,9 +581,9 @@ const CATS = [
 ];
 
 const KEYS = [
- {n:'C',s:'Do',f:261.63,k:'a',cat:'intern',en:['Breaking down requirements','At Bosch I turned OEM variant requests into standardized, traceable documents. On my MCU timer I ran the full requirement → design → build → verify loop myself.'],zh:['需求拆解','在博世把 OEM 变体需求整理成标准化、可追溯的业务文档；做单片机计时器时，独立走通了需求—方案—实现—验证的完整流程。']},
- {n:'D',s:'Re',f:293.66,k:'s',cat:'intern',en:['Getting teams to line up','Coordinated R&D, manufacturing and supply chain at Bosch so everyone read the same requirement the same way.'],zh:['跨团队协同','在博世协同研发、工艺、供应链团队，确保各方对同一需求的理解一致。']},
- {n:'E',s:'Mi',f:329.63,k:'d',cat:'lead',en:['Schedules & risk','Tracked milestones and flagged schedule risks early at Bosch; wrote risk contingencies for three live galas.'],zh:['进度与风险','在博世跟进项目节点、提前识别进度风险；为三场大型晚会制定风险预案。']},
+ {n:'C',s:'Do',f:261.63,k:'a',cat:'intern',en:['Breaking down requirements','In my internship I turned OEM variant requests into standardized, traceable documents. On my MCU timer I ran the full requirement → design → build → verify loop myself.'],zh:['需求拆解','实习中把 OEM 变体需求整理成标准化、可追溯的业务文档；做单片机计时器时，独立走通了需求—方案—实现—验证的完整流程。']},
+ {n:'D',s:'Re',f:293.66,k:'s',cat:'intern',en:['Getting teams to line up','Coordinated R&D, manufacturing and supply chain during my internship so everyone read the same requirement the same way.'],zh:['跨团队协同','实习中协同研发、工艺、供应链团队，确保各方对同一需求的理解一致。']},
+ {n:'E',s:'Mi',f:329.63,k:'d',cat:'lead',en:['Schedules & risk','Tracked milestones and flagged schedule risks early in my internship; wrote risk contingencies for three live galas.'],zh:['进度与风险','实习中跟进项目节点、提前识别进度风险；为三场大型晚会制定风险预案。']},
  {n:'F',s:'Fa',f:349.23,k:'f',cat:'lead',en:['Leading people','Led a 16-person student-union department through three galas and 1,000+ attendees; named an Excellent Student Union Cadre.'],zh:['带领团队','带领 16 人部门完成三场晚会、覆盖 1000 人次，获评校级优秀学生会骨干。']},
  {n:'G',s:'Sol',f:392.00,k:'g',cat:'edu',en:['Technical fluency','Communication engineering plus signal processing & ML at NTU: I can talk with engineers about what a circuit or a model can and can’t do.'],zh:['技术理解力','通信工程背景 + 南洋理工信号处理与机器学习：能和工程师讨论电路与模型的能力边界。']},
  {n:'A',s:'La',f:440.00,k:'h',cat:'projects',en:['Clear communication','Owned the final presentation as a project lead, and writes event copy and hosting scripts.'],zh:['表达与呈现','作为项目主持人负责终期汇报；擅长撰写推文与主持稿。']},
@@ -599,7 +600,7 @@ const EVENTS = [
  {lane:1,cat:'projects',a:[2023,11],b:[2024,11],en:'OpenCV radiotherapy study',zh:'OpenCV 放射源精度研究'},
  {lane:1,cat:'projects',a:[2025,4],en:'Blue Bridge Cup',zh:'蓝桥杯省二',pos:'up'},
  {lane:1,cat:'projects',a:[2025,6],en:'51 MCU timer',zh:'51 单片机计时器',pos:'down'},
- {lane:1,cat:'intern',a:[2026,2],b:[2026,7],en:'Bosch',zh:'博世实习'},
+ {lane:1,cat:'intern',a:[2026,2],b:[2026,7],en:'PM internship',zh:'项目管理实习'},
  {lane:2,cat:'lead',a:[2024,9],b:[2025,6],en:'Head of Culture & Events',zh:'文娱部部长'},
  {lane:3,cat:'stage',a:[2024,6],en:'National Arts Exhibition · 1st prize',zh:'全国大艺展 · 声乐一等奖',pos:'up'}
 ];
@@ -618,7 +619,7 @@ function render(){
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.lang===lang));
   $('#nameMain').textContent = t.nameMain; $('#nameSub').textContent = t.nameSub;
   $('#tagline').innerHTML = t.tagline;
-  $('#seek').innerHTML = t.seek.map(([c,x])=>`<span class="chip ${c}">${esc(x)}</span>`).join('');
+  $('#seek').innerHTML = t.seek.map(([c,x])=>c==='br'?'<span class="brk"></span>':`<span class="chip ${c}">${esc(x)}</span>`).join('');
   $('#readouts').innerHTML = t.readouts.map(([v,u,l])=>`<div class="ro"><div class="v">${esc(v)}<small>${esc(u)}</small></div><div class="l">${esc(l)}</div></div>`).join('');
 
   // orbit bubbles
